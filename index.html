@@ -1,7 +1,760 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+    <title>blog</title>
 </head>
+<style>
+    .container, body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        box-sizing: border-box;
+        overflow: hidden;
+    }
+
+    .face {
+        position: absolute;
+        left: 50%;
+        margin-left: -175px;
+        top: 40px;
+        width: 350px;
+        height: 250px;
+        border-radius: 50% 50% 35% 35%;
+        border: 2px solid #3f200b;
+        z-index: 10;
+        background: #fbf8f1;
+        overflow: hidden;
+    }
+
+    .ear-wrap {
+        position: absolute;
+        left: 50%;
+        width: 300px;
+        margin-left: -150px;
+        margin-top: 20px;
+    }
+
+    .ear {
+        position: absolute;
+        width: 80px;
+        height: 100px;
+        border: 2px solid #000;
+        background: #fbf8f1;
+        border-radius: 100% 10% 50% 0%;
+    }
+
+    .ear-wrap .right {
+        left: auto;
+        right: 0;
+        border-radius: 10% 100% 0% 50%;
+        background: #f1ac2b;
+    }
+
+    .hair {
+        position: absolute;
+        width: 120px;
+        height: 120px;
+        left: 50%;
+        margin-left: 50px;
+        margin-top: -40px;
+        background: #f3b32e;
+        border-radius: 50% 50% 50% 50%;
+    }
+
+    .eye-wrap {
+        position: absolute;
+        width: 280px;
+        height: 70px;
+        top: 90px;
+        left: 50%;
+        margin-left: -140px;
+        overflow: hidden;
+    }
+
+    .eye {
+        height: 100px;
+        width: 100px;
+        position: absolute;
+    }
+
+    .eye-circle {
+        width: 100px;
+        height: 80px;
+        border: 2px solid #482507;
+        overflow: hidden;
+        position: absolute;
+        background: #fff;
+        border-radius: 50% 50% 40% 40%;
+        box-sizing: border-box;
+    }
+
+    .eye-core {
+        height: 55px;
+        width: 46px;
+        border-radius: 50% 50% 50% 50%;
+        background: #000;
+        position: absolute;
+        left: 50%;
+        margin-left: -23px;
+    }
+
+    .eye-bottom {
+        height: 50px;
+        width: 100px;
+        border-radius: 40% 40% 50% 50%;
+        position: absolute;
+        margin-top: 48px;
+        border-top: 2px solid #46240b;
+        background: #f6f7f2;
+    }
+
+    .eye-wrap .right {
+        left: auto;
+        right: 0;
+    }
+
+    .face-red {
+        position: absolute;
+        height: 20px;
+        width: 70px;
+        top: 45px;
+        left: 18px;
+        border-radius: 50% 50% 50% 50%;
+        background: #e85a5e;
+        opacity: 0.0;
+    }
+
+    .nose {
+        width: 20px;
+        height: 10px;
+        border-bottom: 8px solid #000;
+        border-radius: 0% 0% 50% 50%;
+        top: 154px;
+        left: 50%;
+        margin-left: -10px;
+        position: absolute;
+    }
+
+    .mouth-wrap {
+        position: absolute;
+        top: 168px;
+        width: 80px;
+        left: 50%;
+        margin-left: -40px;
+        height: 20px;
+        overflow: hidden;
+    }
+
+    .mouth {
+        width: 40px;
+        height: 40px;
+        border-bottom: 4px solid #000;
+        border-right: 4px solid #000;
+        border-radius: 0% 40% 50% 20%;
+        margin-top: -26px;
+        position: absolute;
+        left: 0;
+    }
+
+    .mouth-wrap .right {
+        border-bottom: 4px solid #000;
+        border-right: none;
+        border-left: 4px solid #000;
+        border-radius: 40% 0% 20% 50%;
+        position: absolute;
+        left: auto;
+        right: 0;
+    }
+
+    .btn-blog {
+        background: url(https://api.superbed.cn/pic/5bfb84eec4ff9e0582460389);
+        background-size: auto 100%;
+        width: 420px;
+        height: 100px;
+        margin: auto;
+        position: absolute;
+        top: 120px;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+
+    /*鼠标hover样式 写在这里*/
+    .ear, .eye-core, .eye-bottom, .face-red, .mouth {
+        transition: all ease-in .3s;
+    }
+
+    /* ear */
+    .face:hover + .ear-wrap .left {
+        transform: rotate(-20deg);
+    }
+
+    .face:hover + .ear-wrap .right {
+        transform: rotate(20deg);
+    }
+
+    /* eye */
+    .face:hover .eye-core {
+        transform: scaleX(0.8) translateX(-40px);
+    }
+
+    .face:hover .eye-bottom {
+        transform: translateY(-20px);
+    }
+
+    .face:hover .face-red {
+        opacity: 0.6;
+    }
+
+    /* mouth */
+    .face:hover .mouth {
+        border-radius: 0% 40% 50% 60%;
+    }
+
+    .blueSky {
+        width: 100%;
+        height: 300px;
+        background-image: -webkit-linear-gradient(top, rgb(196, 228, 253), rgb(255, 255, 255));
+        position: relative;
+        z-index: -1;
+    }
+
+    .grassLand {
+        width: 100%;
+        height: 200px;
+        background-image: -webkit-linear-gradient(top, rgb(255, 255, 255), rgb(148, 190, 89));
+        position: absolute;
+        bottom: 0;
+    }
+
+    .whiteSky {
+        width: 100%;
+        height: auto;
+        background: white;
+    }
+
+    .cloud {
+        width: 103px;
+        height: 30px;
+        background-color: #fff;
+        border: 1px solid #fff;
+        border-radius: 50%;
+        position: absolute;
+    }
+
+    .cloud:after {
+        content: "";
+        height: 29px;
+        width: 46px;
+        background-color: #fff;
+        border: 1px solid #fff;
+        border-radius: 50%;
+        display: block;
+        position: absolute;
+        top: -8px;
+        left: 48px;
+
+    }
+
+    .cloud:before {
+        content: "";
+        height: 36px;
+        width: 46px;
+        background-color: #fff;
+        border: 1px solid #fff;
+        border-radius: 50%;
+        display: block;
+        position: absolute;
+        top: -5px;
+        left: 13px;
+        -webkit-transform: rotate(30deg);
+        transform: rotate(30deg);
+        -moz-transform: rotate(30deg);
+    }
+
+    .cloud-1 {
+        left: -40%;
+        top: 30%;
+        -webkit-animation: moveclouds 15s linear infinite;
+        -moz-animation: moveclouds 15s linear infinite;
+        -o-animation: moveclouds 15s linear infinite;
+        animation-fill-mode: forwards;
+    }
+
+    .cloud-2 {
+        left: -20%;
+        top: 10%;
+        -webkit-transform: scale(0.6);
+        -moz-transform: scale(0.6);
+        transform: scale(0.6);
+        opacity: 0.6;
+        -webkit-animation: moveclouds 25s linear infinite;
+        -moz-animation: moveclouds 25s linear infinite;
+        -o-animation: moveclouds 25s linear infinite;
+        animation-fill-mode: forwards;
+    }
+
+    .cloud-3 {
+        left: -60%;
+        top: 40%;
+        -webkit-transform: scale(0.8);
+        -moz-transform: scale(0.8);
+        transform: scale(0.8);
+        opacity: 0.8;
+        -webkit-animation: moveclouds 20s linear infinite;
+        -moz-animation: moveclouds 20s linear infinite;
+        -o-animation: moveclouds 20s linear infinite;
+        animation-fill-mode: forwards;
+    }
+
+    .cloud-4 {
+        left: -90%;
+        top: 30%;
+        -webkit-transform: scale(0.75);
+        -moz-transform: scale(0.75);
+        transform: scale(0.75);
+        opacity: 0.75;
+        -webkit-animation: moveclouds 18s linear infinite;
+        -moz-animation: moveclouds 18s linear infinite;
+        -o-animation: moveclouds 18s linear infinite;
+        animation-fill-mode: forwards;
+    }
+
+    .cloud-5 {
+        left: -10%;
+        top: 60%;
+        -webkit-transform: scale(0.8);
+        -moz-transform: scale(0.8);
+        transform: scale(0.8);
+        opacity: 0.8;
+        -webkit-animation: moveclouds 20s linear infinite;
+        -moz-animation: moveclouds 20s linear infinite;
+        -o-animation: moveclouds 20s linear infinite;
+        animation-fill-mode: forwards;
+    }
+
+    @-webkit-keyframes moveclouds {
+            from {
+            transform: translate(0, 0);
+        }
+        to {
+            transform: translate(1600px, 0);
+        }
+    }
+
+    @-moz-keyframes moveclouds {
+            from {
+            transform: translate(0, 0);
+        }
+        to {
+            transform: translate(1600px, 0);
+        }
+    }
+
+    @-o-keyframes moveclouds {
+            from {
+            transform: translate(0, 0);
+        }
+        to {
+            transform: translate(1600px, 0);
+        }
+    }
+
+    /*
+    花花
+    */
+    #position-1 {
+        position: fixed;
+        bottom: 180px;
+        left: 25px;
+    }
+
+    .sunflower-1 {
+        position: relative;
+        height: 30px;
+        width: 30px;
+    }
+    #position-2 {
+        position: fixed;
+        bottom: 120px;
+        left: 200px;
+    }
+    .sunflower-2 {
+        position: relative;
+        height: 50px;
+        width: 50px;
+    }
+    #position-3{
+        position: fixed;
+        bottom: 180px;
+        left: 420px;
+    }
+    .sunflower-3 {
+        position: relative;
+        height: 60px;
+        width: 60px;
+    }
+    #position-4{
+        position: fixed;
+        bottom: 120px;
+        left: 600px;
+    }
+    .sunflower-4 {
+        position: relative;
+        height: 40px;
+        width: 40px;
+    }
+    #position-5{
+        position: fixed;
+        bottom: 180px;
+        left: 800px;
+    }
+    .sunflower-5 {
+        position: relative;
+        height: 60px;
+        width: 60px;
+    }
+    #position-6{
+        position: fixed;
+        bottom: 150px;
+        left: 1100px;
+    }
+    .sunflower-6 {
+        position: relative;
+        height: 60px;
+        width: 60px;
+    }
+    .head {
+        animation: hmove 2s infinite linear;
+        height: 50px;
+        width: 62px;
+        position: relative;
+        left: 8px;
+        top: 39px;
+        transform-origin: 50% -7px;
+        user-select: none;
+    }
+    .head .eye {
+        background: #43699a;
+        border-radius: 10px;
+        height: 5px;
+        position: absolute;
+        top: 30px;
+        width: 5px;
+    }
+
+    .head .eye#eye-1 {
+        left: 17px;
+        animation: eye 4s linear infinite normal 0.5s;
+    }
+
+    .head .eye#eye-2 {
+        right: 17px;
+        animation: eye 4s linear infinite normal 0.5s;
+    }
+
+    .head .mouth {
+        background: #ecf0f1;
+        border-radius: 30px;
+        border: 0;
+        bottom: 2px;
+        clip: rect(8px, 15px, 16px, 0);
+        height: 16px;
+        margin-left: -7.5px;
+        position: absolute;
+        left: 50%;
+        width: 15px;
+    }
+
+    .petals {
+        z-index: -1;
+        border-radius: 100%;
+        display: inline-block;
+        background-color: #faaa18;
+        height: 50px;
+        width: 50px;
+        position: absolute;
+        animation: petals 2s infinite linear;
+        box-shadow: 15px 17px #ffe000,
+        -15px 17px #ffe000,
+        -22px -7px #ffe000,
+        0px -22px #ffe000,
+        22px -7px #ffe000;
+    }
+    .petals-2{
+        background-color: #FFC0CB;
+        box-shadow: 15px 17px #FF7F50,
+        -15px 17px #FF7F50,
+        -22px -7px #FF7F50,
+        0px -22px #FF7F50,
+        22px -7px #FF7F50;
+
+    }
+    .petals-3{
+        background-color: #FFE000;
+        box-shadow: 15px 17px #A020F0,
+        -15px 17px #A020F0,
+        -22px -7px #A020F0,
+        0px -22px #A020F0,
+        22px -7px #A020F0;
+
+    }
+    .trunk {
+        height: 65px;
+        width: 5px;
+        background: #77b039;
+        left: 37px;
+        top: 100px;
+        position: absolute;
+        z-index: -2;
+        animation: trunk 2s infinite linear;
+    }
+
+    .left-branch {
+        background: #77b039;
+        height: 35px;
+        width: 9px;
+        position: absolute;
+        left: -12px;
+        top: 24px;
+        border-radius: 100% 0% 0% 0%;
+        -webkit-border-radius: 100% 0% 0% 0%;
+        -moz-border-radius: 100% 0% 0% 0%;
+        -ms-border-radius: 100% 0% 0% 0%;
+        -o-border-radius: 100% 0% 0% 0%;
+
+        transform: rotate(-50deg);
+        -webkit-transform: rotate(-50deg);
+        -moz-transform: rotate(-50deg);
+        -ms-transform: rotate(-50deg);
+        -o-transform: rotate(-50deg);
+    }
+
+    .right-branch {
+        background: #77b039;
+        height: 35px;
+        width: 9px;
+        position: absolute;
+        top: 24px;
+        left: 10px;
+        border-radius: 0% 100% 0% 0%;
+        -webkit-border-radius: 0% 100% 0% 0%;
+        -moz-border-radius: 0% 100% 0% 0%;
+        -ms-border-radius: 0% 100% 0% 0%;
+        -o-border-radius: 0% 100% 0% 0%;
+
+        transform: rotate(50deg);
+        -webkit-transform: rotate(50deg);
+        -moz-transform: rotate(50deg);
+        -ms-transform: rotate(50deg);
+        -o-transform: rotate(50deg);
+    }
+
+    @keyframes petals {
+        0% {
+            transform: rotate(0);
+            left: 10px;
+        }
+        25% {
+            left: 20px;
+        }
+        50% {
+            left: 10px;
+        }
+        75% {
+            left: 20px;
+        }
+        100% {
+            transform: rotate(360deg);
+            left: 10px;
+        }
+    }
+
+    @keyframes hmove {
+        0% {
+            left: 5px;
+        }
+        25% {
+            left: 15px;
+        }
+        50% {
+            left: 5px;
+        }
+        75% {
+            left: 15px;
+        }
+        100% {
+            left: 5px;
+        }
+    }
+
+    @keyframes eye {
+        from {
+        }
+        79% {
+            height: 5px;
+        }
+        80% {
+            height: 0px;
+        }
+        85% {
+            height: 5px;
+        }
+        to {
+            height: 5px;
+        }
+    }
+
+    @keyframes trunk {
+        0% {
+            left: 34px;
+            transform: rotate(-5deg);
+        }
+        25% {
+            left: 40px;
+            transform: rotate(5deg);
+        }
+        50% {
+            left: 34px;
+            transform: rotate(-5deg);
+        }
+        75% {
+            left: 40px;
+            transform: rotate(5deg);
+        }
+        100% {
+            left: 34px;
+            transform: rotate(-5deg);
+        }
+    }
+</style>
 <body>
-<a href="/blog">blog</a>
+<div class="container">
+    <a href="/blog">
+        <div class="btn-blog"></div>
+    </a>
+    <div class="face">
+
+        <div class="hair">
+            <div></div>
+        </div>
+
+        <div class="eye-wrap">
+            <div class="eye left">
+                <div class="eye-circle">
+                    <div class="eye-core"></div>
+                </div>
+                <div class="eye-bottom"></div>
+                <div class="face-red"></div>
+            </div>
+            <div class="eye right">
+                <div class="eye-circle">
+                    <div class="eye-core"></div>
+                </div>
+                <div class="eye-bottom"></div>
+                <div class="face-red"></div>
+            </div>
+        </div>
+
+        <div class="nose">
+        </div>
+
+        <div class="mouth-wrap">
+
+            <div class="mouth left"></div>
+            <div class="mouth right"></div>
+        </div>
+    </div>
+    <div class="ear-wrap">
+        <div class="ear left"></div>
+        <div class="ear right"></div>
+    </div>
+
+    <div class="blueSky">
+        <div class="cloud cloud-1"></div>
+        <div class="cloud cloud-2"></div>
+        <div class="cloud cloud-3"></div>
+        <div class="cloud cloud-4"></div>
+        <div class="cloud cloud-5"></div>
+    </div>
+    <div class="whiteSky">
+    </div>
+    <div class="grassLand">
+        <div id="position-1" class="sunflower-1">
+            <div class="head">
+                <div id="eye-1" class="eye"></div>
+                <div id="eye-2" class="eye"></div>
+                <div class="mouth"></div>
+            </div>
+            <div class="petals"></div>
+            <div class="trunk">
+                <div class="left-branch"></div>
+                <div class="right-branch"></div>
+            </div>
+        </div>
+        <div id="position-2" class="sunflower-2">
+            <div class="head">
+                <div id="eye-1" class="eye"></div>
+                <div id="eye-2" class="eye"></div>
+                <div class="mouth"></div>
+            </div>
+            <div class="petals petals-2"></div>
+            <div class="trunk">
+                <div class="left-branch"></div>
+                <div class="right-branch"></div>
+            </div>
+        </div>
+        <div id="position-3" class="sunflower-3">
+            <div class="head">
+                <div id="eye-1" class="eye"></div>
+                <div id="eye-2" class="eye"></div>
+                <div class="mouth"></div>
+            </div>
+            <div class="petals petals-3"></div>
+            <div class="trunk">
+                <div class="left-branch"></div>
+                <div class="right-branch"></div>
+            </div>
+        </div>
+        <div id="position-4" class="sunflower-4">
+            <div class="head">
+                <div id="eye-1" class="eye"></div>
+                <div id="eye-2" class="eye"></div>
+                <div class="mouth"></div>
+            </div>
+            <div class="petals petals-2 "></div>
+            <div class="trunk">
+                <div class="left-branch"></div>
+                <div class="right-branch"></div>
+            </div>
+        </div>
+        <div id="position-5" class="sunflower-5">
+            <div class="head">
+                <div id="eye-1" class="eye"></div>
+                <div id="eye-2" class="eye"></div>
+                <div class="mouth"></div>
+            </div>
+            <div class="petals"></div>
+            <div class="trunk">
+                <div class="left-branch"></div>
+                <div class="right-branch"></div>
+            </div>
+        </div>
+        <div id="position-6" class="sunflower-6">
+            <div class="head">
+                <div id="eye-1" class="eye"></div>
+                <div id="eye-2" class="eye"></div>
+                <div class="mouth"></div>
+            </div>
+            <div class="petals petals-3"></div>
+            <div class="trunk">
+                <div class="left-branch"></div>
+                <div class="right-branch"></div>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>
