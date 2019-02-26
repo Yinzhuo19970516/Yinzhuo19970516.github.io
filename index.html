@@ -13,7 +13,6 @@
         box-sizing: border-box;
         overflow: hidden;
     }
-
     .face {
         position: absolute;
         left: 50%;
@@ -27,7 +26,6 @@
         background: #fbf8f1;
         overflow: hidden;
     }
-
     .ear-wrap {
         position: absolute;
         left: 50%;
@@ -35,7 +33,6 @@
         margin-left: -150px;
         margin-top: 20px;
     }
-
     .ear {
         position: absolute;
         width: 80px;
@@ -44,14 +41,12 @@
         background: #fbf8f1;
         border-radius: 100% 10% 50% 0%;
     }
-
     .ear-wrap .right {
         left: auto;
         right: 0;
         border-radius: 10% 100% 0% 50%;
         background: #f1ac2b;
     }
-
     .hair {
         position: absolute;
         width: 120px;
@@ -62,7 +57,6 @@
         background: #f3b32e;
         border-radius: 50% 50% 50% 50%;
     }
-
     .eye-wrap {
         position: absolute;
         width: 280px;
@@ -72,13 +66,11 @@
         margin-left: -140px;
         overflow: hidden;
     }
-
     .eye {
         height: 100px;
         width: 100px;
         position: absolute;
     }
-
     .eye-circle {
         width: 100px;
         height: 80px;
@@ -89,7 +81,6 @@
         border-radius: 50% 50% 40% 40%;
         box-sizing: border-box;
     }
-
     .eye-core {
         height: 55px;
         width: 46px;
@@ -99,7 +90,6 @@
         left: 50%;
         margin-left: -23px;
     }
-
     .eye-bottom {
         height: 50px;
         width: 100px;
@@ -109,12 +99,10 @@
         border-top: 2px solid #46240b;
         background: #f6f7f2;
     }
-
     .eye-wrap .right {
         left: auto;
         right: 0;
     }
-
     .face-red {
         position: absolute;
         height: 20px;
@@ -125,7 +113,6 @@
         background: #e85a5e;
         opacity: 0.0;
     }
-
     .nose {
         width: 20px;
         height: 10px;
@@ -136,7 +123,6 @@
         margin-left: -10px;
         position: absolute;
     }
-
     .mouth-wrap {
         position: absolute;
         top: 168px;
@@ -146,7 +132,6 @@
         height: 20px;
         overflow: hidden;
     }
-
     .mouth {
         width: 40px;
         height: 40px;
@@ -157,7 +142,6 @@
         position: absolute;
         left: 0;
     }
-
     .mouth-wrap .right {
         border-bottom: 4px solid #000;
         border-right: none;
@@ -167,7 +151,6 @@
         left: auto;
         right: 0;
     }
-
     .btn-blog {
         background: url(https://api.superbed.cn/pic/5bfb84eec4ff9e0582460389);
         background-size: cover;
@@ -179,40 +162,45 @@
         left: 0;
         right: 0;
         bottom: 0;
+        animation: enlarge-but 3s linear infinite;
+    }
+    @keyframes enlarge-but {
+    0%{
+        transform: scale(.95);
     }
 
+    50%{
+        transform: scale(1.2);
+    }
+    100%{
+        transform: scale(.95);
+    }
+    }
     /*鼠标hover样式 写在这里*/
     .ear, .eye-core, .eye-bottom, .face-red, .mouth {
         transition: all ease-in .3s;
     }
-
     /* ear */
     .face:hover + .ear-wrap .left {
         transform: rotate(-20deg);
     }
-
     .face:hover + .ear-wrap .right {
         transform: rotate(20deg);
     }
-
     /* eye */
     .face:hover .eye-core {
         transform: scaleX(0.8) translateX(-40px);
     }
-
     .face:hover .eye-bottom {
         transform: translateY(-20px);
     }
-
     .face:hover .face-red {
         opacity: 0.6;
     }
-
     /* mouth */
     .face:hover .mouth {
         border-radius: 0% 40% 50% 60%;
     }
-
     .blueSky {
         width: 100%;
         height: 300px;
@@ -220,7 +208,6 @@
         position: relative;
         z-index: -1;
     }
-
     .grassLand {
         width: 100%;
         height: 150px;
@@ -228,13 +215,11 @@
         position: absolute;
         bottom: 0;
     }
-
     .whiteSky {
         width: 100%;
         height: auto;
         background: white;
     }
-
     .cloud {
         width: 103px;
         height: 30px;
@@ -243,7 +228,6 @@
         border-radius: 50%;
         position: absolute;
     }
-
     .cloud:after {
         content: "";
         height: 29px;
@@ -255,9 +239,7 @@
         position: absolute;
         top: -8px;
         left: 48px;
-
     }
-
     .cloud:before {
         content: "";
         height: 36px;
@@ -273,7 +255,6 @@
         transform: rotate(30deg);
         -moz-transform: rotate(30deg);
     }
-
     .cloud-1 {
         left: -40%;
         top: 30%;
@@ -282,7 +263,6 @@
         -o-animation: moveclouds 15s linear infinite;
         animation-fill-mode: forwards;
     }
-
     .cloud-2 {
         left: -20%;
         top: 10%;
@@ -295,7 +275,6 @@
         -o-animation: moveclouds 25s linear infinite;
         animation-fill-mode: forwards;
     }
-
     .cloud-3 {
         left: -60%;
         top: 40%;
@@ -308,7 +287,6 @@
         -o-animation: moveclouds 20s linear infinite;
         animation-fill-mode: forwards;
     }
-
     .cloud-4 {
         left: -90%;
         top: 30%;
@@ -321,7 +299,6 @@
         -o-animation: moveclouds 18s linear infinite;
         animation-fill-mode: forwards;
     }
-
     .cloud-5 {
         left: -10%;
         top: 60%;
@@ -334,34 +311,30 @@
         -o-animation: moveclouds 20s linear infinite;
         animation-fill-mode: forwards;
     }
-
     @-webkit-keyframes moveclouds {
-            from {
+            from {
             transform: translate(0, 0);
         }
         to {
             transform: translate(1600px, 0);
         }
     }
-
     @-moz-keyframes moveclouds {
-            from {
+            from {
             transform: translate(0, 0);
         }
         to {
             transform: translate(1600px, 0);
         }
     }
-
     @-o-keyframes moveclouds {
-            from {
+            from {
             transform: translate(0, 0);
         }
         to {
             transform: translate(1600px, 0);
         }
     }
-
     /*
     花花
     */
@@ -370,7 +343,6 @@
         bottom: 180px;
         left: 3%;
     }
-
     .sunflower-1 {
         position: relative;
         height: 30px;
@@ -427,7 +399,7 @@
         width: 60px;
     }
     .head {
-        animation: hmove 2s infinite linear;
+        animation: hmove 4s infinite linear;
         height: 50px;
         width: 62px;
         position: relative;
@@ -444,17 +416,14 @@
         top: 30px;
         width: 5px;
     }
-
     .head .eye#eye-1 {
         left: 17px;
         animation: eye 4s linear infinite normal 0.5s;
     }
-
     .head .eye#eye-2 {
         right: 17px;
         animation: eye 4s linear infinite normal 0.5s;
     }
-
     .head .mouth {
         background: #ecf0f1;
         border-radius: 30px;
@@ -467,7 +436,6 @@
         left: 50%;
         width: 15px;
     }
-
     .petals {
         z-index: -1;
         border-radius: 100%;
@@ -476,7 +444,7 @@
         height: 50px;
         width: 50px;
         position: absolute;
-        animation: petals 2s infinite linear;
+        animation: petals 3s infinite linear;
         box-shadow: 15px 17px #ffe000,
         -15px 17px #ffe000,
         -22px -7px #ffe000,
@@ -490,7 +458,6 @@
         -22px -7px #FF7F50,
         0px -22px #FF7F50,
         22px -7px #FF7F50;
-
     }
     .petals-3{
         background-color: #FFE000;
@@ -499,7 +466,6 @@
         -22px -7px mediumvioletred,
         0px -22px mediumvioletred,
         22px -7px mediumvioletred;
-
     }
     .trunk {
         height: 65px;
@@ -511,7 +477,6 @@
         z-index: -2;
         animation: trunk 2s infinite linear;
     }
-
     .left-branch {
         background: #77b039;
         height: 35px;
@@ -524,14 +489,12 @@
         -moz-border-radius: 100% 0% 0% 0%;
         -ms-border-radius: 100% 0% 0% 0%;
         -o-border-radius: 100% 0% 0% 0%;
-
         transform: rotate(-50deg);
         -webkit-transform: rotate(-50deg);
         -moz-transform: rotate(-50deg);
         -ms-transform: rotate(-50deg);
         -o-transform: rotate(-50deg);
     }
-
     .right-branch {
         background: #77b039;
         height: 35px;
@@ -544,14 +507,12 @@
         -moz-border-radius: 0% 100% 0% 0%;
         -ms-border-radius: 0% 100% 0% 0%;
         -o-border-radius: 0% 100% 0% 0%;
-
         transform: rotate(50deg);
         -webkit-transform: rotate(50deg);
         -moz-transform: rotate(50deg);
         -ms-transform: rotate(50deg);
         -o-transform: rotate(50deg);
     }
-
     @keyframes petals {
         0% {
             transform: rotate(0);
@@ -571,7 +532,6 @@
             left: 10px;
         }
     }
-
     @keyframes hmove {
         0% {
             left: 5px;
@@ -589,7 +549,6 @@
             left: 5px;
         }
     }
-
     @keyframes eye {
         from {
         }
@@ -606,7 +565,6 @@
             height: 5px;
         }
     }
-
     @keyframes trunk {
         0% {
             left: 34px;
