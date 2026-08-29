@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="TabPare closes duplicate and inactive Chrome tabs on demand, with optional scheduled duplicate cleanup.">
+    <meta name="color-scheme" content="light">
+    <meta name="theme-color" content="#f4f2ea">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; img-src 'self' data:; base-uri 'none'; form-action 'none'">
+    <title>TabPare — Keep the tabs that matter</title>
+    <link rel="icon" href="icon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+
+    <header class="site-header">
+      <a class="brand" href="index.html" aria-label="TabPare home" translate="no">
+        <img class="brand-mark" src="icon.svg" width="38" height="38" alt="" aria-hidden="true">
+        <span>TabPare</span>
+      </a>
+      <nav class="site-nav" aria-label="Primary navigation">
+        <ul>
+          <li><a href="index.html" aria-current="page">Overview</a></li>
+          <li><a href="support.html">Support</a></li>
+          <li><a href="privacy.html">Privacy</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main id="main-content" class="page-shell">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow">Chrome tab cleanup</p>
+          <h1 id="hero-title">Keep the tabs that matter.</h1>
+          <p class="hero-lede">TabPare finds duplicate and inactive tabs, shows you the count, and closes them when you choose. Scheduled cleanup is available for duplicates only.</p>
+        </div>
+        <p class="hero-note"><strong>Private by design</strong>Tab URLs are processed on your device and are not saved or sent to TabPare servers.</p>
+      </section>
+
+      <section class="principles" aria-label="Core features">
+        <article class="principle">
+          <span class="principle-index" aria-hidden="true">01 / SEE</span>
+          <h2>Count first.</h2>
+          <p>See how many duplicate and inactive tabs are candidates before starting either cleanup.</p>
+        </article>
+        <article class="principle">
+          <span class="principle-index" aria-hidden="true">02 / CLOSE</span>
+          <h2>One action.</h2>
+          <p>Manual cleanup starts immediately. Active, pinned, and audible tabs remain protected.</p>
+        </article>
+        <article class="principle">
+          <span class="principle-index" aria-hidden="true">03 / SCHEDULE</span>
+          <h2>Your timing.</h2>
+          <p>Automation is off by default. Two hours is preselected, with presets and custom intervals from 30 minutes to 7 days.</p>
+        </article>
+      </section>
+
+      <section aria-labelledby="behavior-title">
+        <div class="section-heading">
+          <h2 id="behavior-title">Predictable by default.</h2>
+          <p>TabPare has one focused purpose: reduce open-tab clutter without inserting scripts into websites or sending browsing activity to a developer server.</p>
+        </div>
+        <ul class="mode-list">
+          <li><strong>Duplicate cleanup</strong><span>Groups matching HTTP or HTTPS URLs, keeps protected tabs, and otherwise keeps the most recently used copy.</span></li>
+          <li><strong>Inactive cleanup</strong><span>Uses the threshold you set for manual cleanup. Internal browser pages and active, pinned, or audible tabs are excluded.</span></li>
+          <li><strong>Automatic cleanup</strong><span>Runs only after you enable it and closes duplicate tabs only. It never closes inactive tabs in the background.</span></li>
+        </ul>
+        <a class="text-link" href="support.html">Read setup and troubleshooting guidance →</a>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>TabPare · Focused tab cleanup for Chrome</p>
+      <nav aria-label="Footer navigation">
+        <a href="support.html">Support</a>
+        <a href="privacy.html">Privacy</a>
+      </nav>
+    </footer>
+  </body>
+</html>

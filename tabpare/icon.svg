@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128">
+  <title>TabPare</title>
+  <desc>A geometric P formed from a pared-back browser tab.</desc>
+  <rect x="16" y="16" width="96" height="96" rx="24" fill="#D8FF47" />
+  <path
+    d="M40 36h25l8 7h4c13 0 21 8 21 20s-8 20-22 20H60v14H40V36Zm20 21v11h13c4 0 6-2 6-5.5S77 57 73 57H60Z"
+    fill="#11120F"
+    fill-rule="evenodd"
+  />
+</svg>

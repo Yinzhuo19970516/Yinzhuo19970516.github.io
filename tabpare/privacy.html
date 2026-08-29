@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Privacy policy for the TabPare Chrome extension.">
+    <meta name="color-scheme" content="light">
+    <meta name="theme-color" content="#f4f2ea">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; img-src 'self' data:; base-uri 'none'; form-action 'none'">
+    <title>Privacy Policy — TabPare</title>
+    <link rel="icon" href="icon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+
+    <header class="site-header">
+      <a class="brand" href="index.html" aria-label="TabPare home" translate="no">
+        <img class="brand-mark" src="icon.svg" width="38" height="38" alt="" aria-hidden="true">
+        <span>TabPare</span>
+      </a>
+      <nav class="site-nav" aria-label="Primary navigation">
+        <ul>
+          <li><a href="index.html">Overview</a></li>
+          <li><a href="support.html">Support</a></li>
+          <li><a href="privacy.html" aria-current="page">Privacy</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main id="main-content" class="page-shell document">
+      <header class="document-header">
+        <p class="eyebrow">TabPare privacy</p>
+        <h1>Privacy Policy</h1>
+        <p>How TabPare handles information while identifying and closing duplicate and inactive Chrome tabs.</p>
+      </header>
+
+      <section aria-labelledby="operator-title">
+        <h2 id="operator-title">Scope</h2>
+        <p>This policy applies to the TabPare Chrome extension.</p>
+        <dl>
+          <dt>Effective date</dt>
+          <dd>August 29, 2026</dd>
+        </dl>
+      </section>
+
+      <section aria-labelledby="processing-title">
+        <h2 id="processing-title">Information processed</h2>
+        <p>To provide its cleanup features, TabPare reads information about tabs currently open in Chrome:</p>
+        <ul>
+          <li>The tab URL, to group matching pages and restrict cleanup to normal HTTP or HTTPS pages.</li>
+          <li>The tab's last-accessed time, to identify inactive tabs and choose which duplicate to keep.</li>
+          <li>Whether the tab is active, pinned, or playing audio, so protected tabs are not closed.</li>
+          <li>The tab identifier, so Chrome can close the selected candidate.</li>
+        </ul>
+        <p>This information is processed temporarily on the user's device. TabPare does not persist tab URLs, page content, page titles, or a browsing-history log.</p>
+      </section>
+
+      <section aria-labelledby="storage-title">
+        <h2 id="storage-title">Settings and local records</h2>
+        <p>TabPare stores only the information needed to remember user choices and report the latest cleanup:</p>
+        <ul>
+          <li><strong>Chrome Sync storage:</strong> whether automatic cleanup is enabled, the selected automatic-cleanup interval, and the manual inactivity threshold and unit. Chrome may sync these settings through the user's signed-in Chrome profile when Chrome Sync is enabled.</li>
+          <li><strong>Local extension storage:</strong> one aggregate record for the most recent cleanup, including its trigger, cleanup type, timestamps, and counts of closed, skipped, or failed tabs. This record contains no tab URLs.</li>
+        </ul>
+      </section>
+
+      <section aria-labelledby="use-title">
+        <h2 id="use-title">How information is used</h2>
+        <p>Tab information and saved settings are used solely to provide the user-facing functions described in the Chrome Web Store listing: count and manually close duplicate or inactive tabs, protect active, pinned, or audible tabs, and run optional scheduled duplicate cleanup after the user enables it.</p>
+      </section>
+
+      <section aria-labelledby="sharing-title">
+        <h2 id="sharing-title">No developer collection or sharing</h2>
+        <p>TabPare has no developer-operated data server, advertising SDK, or analytics SDK. The extension does not sell, share, or transmit browsing activity or settings to the operator or to third parties. It does not use information for advertising, creditworthiness, lending, or any purpose unrelated to tab cleanup.</p>
+      </section>
+
+      <section aria-labelledby="control-title">
+        <h2 id="control-title">Your controls and retention</h2>
+        <ul>
+          <li>Automatic cleanup is off by default and can be disabled at any time in TabPare settings.</li>
+          <li>Settings remain in Chrome extension storage until changed, cleared through Chrome, or removed with the extension, subject to Chrome Sync behavior.</li>
+          <li>The local aggregate cleanup record is replaced after a later cleanup and can be removed by clearing the extension's stored data or uninstalling TabPare.</li>
+        </ul>
+      </section>
+
+      <section aria-labelledby="permissions-title">
+        <h2 id="permissions-title">Chrome permissions</h2>
+        <dl>
+          <dt><code>tabs</code></dt>
+          <dd>Reads the state of currently open tabs and closes selected candidates.</dd>
+          <dt><code>storage</code></dt>
+          <dd>Saves cleanup settings and the most recent aggregate cleanup result.</dd>
+          <dt><code>alarms</code></dt>
+          <dd>Schedules duplicate cleanup at the interval explicitly enabled and selected by the user.</dd>
+        </dl>
+        <p>TabPare does not request access to all website content, bookmarks, Chrome browsing history, downloads, or the user's identity.</p>
+      </section>
+
+      <section aria-labelledby="limited-use-title">
+        <h2 id="limited-use-title">Limited Use</h2>
+        <p>TabPare's use of information received from Chrome APIs complies with the Chrome Web Store User Data Policy, including its Limited Use requirements.</p>
+      </section>
+
+      <section aria-labelledby="changes-title">
+        <h2 id="changes-title">Changes and contact</h2>
+        <p>If TabPare's data practices change, this policy and the Chrome Web Store disclosures will be updated before the change is released. Questions can be submitted through the Support hub on TabPare's Chrome Web Store listing.</p>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>TabPare · Privacy policy</p>
+      <nav aria-label="Footer navigation">
+        <a href="index.html">Overview</a>
+        <a href="support.html">Support</a>
+      </nav>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Setup, safety, and troubleshooting guidance for the TabPare Chrome extension.">
+    <meta name="color-scheme" content="light">
+    <meta name="theme-color" content="#f4f2ea">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; img-src 'self' data:; base-uri 'none'; form-action 'none'">
+    <title>Support — TabPare</title>
+    <link rel="icon" href="icon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+
+    <header class="site-header">
+      <a class="brand" href="index.html" aria-label="TabPare home" translate="no">
+        <img class="brand-mark" src="icon.svg" width="38" height="38" alt="" aria-hidden="true">
+        <span>TabPare</span>
+      </a>
+      <nav class="site-nav" aria-label="Primary navigation">
+        <ul>
+          <li><a href="index.html">Overview</a></li>
+          <li><a href="support.html" aria-current="page">Support</a></li>
+          <li><a href="privacy.html">Privacy</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main id="main-content" class="page-shell document">
+      <header class="document-header">
+        <p class="eyebrow">TabPare support</p>
+        <h1>Clear guidance. No mystery.</h1>
+        <p>Learn what each cleanup does, how scheduling works, and what to check when a count or cleanup is not what you expected.</p>
+      </header>
+
+      <section aria-labelledby="start-title">
+        <h2 id="start-title">Getting started</h2>
+        <ol>
+          <li>Install TabPare from the Chrome Web Store and pin it to the toolbar.</li>
+          <li>Select the TabPare icon to see the current duplicate and inactive candidate counts.</li>
+          <li>Select <strong>Close</strong> for the cleanup you want. Cleanup starts immediately without a confirmation dialog.</li>
+          <li>Open <strong>Settings</strong> to change the inactivity threshold or configure optional automatic cleanup.</li>
+        </ol>
+        <p>TabPare requires Chrome 121 or later.</p>
+      </section>
+
+      <section aria-labelledby="manual-title">
+        <h2 id="manual-title">Manual cleanup</h2>
+        <dl>
+          <dt>Duplicate tabs</dt>
+          <dd>TabPare groups tabs with the same HTTP or HTTPS URL. It keeps protected tabs; when no copy is protected, it keeps the most recently used copy and closes the other candidates.</dd>
+          <dt>Inactive tabs</dt>
+          <dd>TabPare compares each normal web tab's last-accessed time with your chosen threshold. Only manual cleanup can close inactive tabs.</dd>
+        </dl>
+        <p>Active, pinned, and audible tabs are protected. Chrome internal pages and other non-web URLs are excluded from both cleanup types.</p>
+      </section>
+
+      <section aria-labelledby="automatic-title">
+        <h2 id="automatic-title">Automatic cleanup</h2>
+        <ul>
+          <li>Automation is off by default.</li>
+          <li>Two hours is the recommended preselected interval, but nothing runs until you enable <strong>Automatic cleanup</strong>.</li>
+          <li>Preset choices range from 30 minutes to one week. The custom option accepts whole-number intervals within the same range.</li>
+          <li>Scheduled cleanup closes duplicate tabs only. It never closes inactive tabs in the background.</li>
+          <li>Scheduling works while Chrome is running. A missed alarm may run after Chrome or the computer wakes.</li>
+        </ul>
+      </section>
+
+      <section aria-labelledby="troubleshooting-title">
+        <h2 id="troubleshooting-title">Troubleshooting</h2>
+        <dl>
+          <dt>The count is lower than expected</dt>
+          <dd>Check whether a tab is active, pinned, playing audio, or uses a non-HTTP(S) address. Those tabs are excluded or protected.</dd>
+          <dt>A duplicate remains open</dt>
+          <dd>A protected copy is kept. Tabs may also change between the count and the final safety check, in which case TabPare skips the tab.</dd>
+          <dt>An inactive tab is not counted</dt>
+          <dd>Confirm the inactivity value and unit in Settings. Chrome must provide a valid last-accessed time, and the tab must have remained unused past the threshold.</dd>
+          <dt>Automatic cleanup did not run</dt>
+          <dd>Confirm that Automatic cleanup is enabled and Chrome is running. Disabling the switch removes the scheduled alarm.</dd>
+          <dt>The extension stopped responding</dt>
+          <dd>Open <code>chrome://extensions</code>, confirm TabPare is enabled, then restart Chrome. If the problem continues, include your Chrome version and steps to reproduce when contacting support.</dd>
+        </dl>
+      </section>
+
+      <section aria-labelledby="contact-title">
+        <h2 id="contact-title">Contact support</h2>
+        <p>Use the Support hub on TabPare's Chrome Web Store listing and include:</p>
+        <ul>
+          <li>Your Chrome version and operating system.</li>
+          <li>The TabPare version shown on <code>chrome://extensions</code>.</li>
+          <li>What you expected, what happened, and reproducible steps.</li>
+        </ul>
+        <p>Do not send private browsing history, account credentials, or screenshots containing sensitive tab titles or URLs.</p>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>TabPare · Support</p>
+      <nav aria-label="Footer navigation">
+        <a href="index.html">Overview</a>
+        <a href="privacy.html">Privacy</a>
+      </nav>
+    </footer>
+  </body>
+</html>
