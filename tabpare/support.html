@@ -6,10 +6,13 @@
     <meta name="description" content="Setup, safety, and troubleshooting guidance for the TabPare Chrome extension.">
     <meta name="color-scheme" content="light">
     <meta name="theme-color" content="#f4f2ea">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; img-src 'self' data:; base-uri 'none'; form-action 'none'">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; img-src 'self' data:; media-src 'self'; base-uri 'none'; form-action 'none'">
     <title>Support — TabPare</title>
     <link rel="icon" href="icon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="styles.css">
+    <link rel="alternate" hreflang="en" href="support.html">
+    <link rel="alternate" hreflang="zh-CN" href="zh-CN/support.html">
+    <link rel="alternate" hreflang="x-default" href="support.html">
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to content</a>
@@ -19,42 +22,69 @@
         <img class="brand-mark" src="icon.svg" width="38" height="38" alt="" aria-hidden="true">
         <span>TabPare</span>
       </a>
-      <nav class="site-nav" aria-label="Primary navigation">
-        <ul>
-          <li><a href="index.html">Overview</a></li>
-          <li><a href="support.html" aria-current="page">Support</a></li>
-          <li><a href="privacy.html">Privacy</a></li>
-        </ul>
-      </nav>
+      <div class="site-header-actions">
+        <nav class="site-nav" aria-label="Primary navigation">
+          <ul>
+            <li><a href="index.html">Overview</a></li>
+            <li><a href="support.html" aria-current="page">Support</a></li>
+            <li><a href="privacy.html">Privacy</a></li>
+          </ul>
+        </nav>
+        <a class="language-link" href="zh-CN/support.html" lang="zh-CN" hreflang="zh-CN" aria-label="切换到简体中文">中文</a>
+      </div>
     </header>
 
     <main id="main-content" class="page-shell document">
       <header class="document-header">
         <p class="eyebrow">TabPare support</p>
         <h1>Clear guidance. No mystery.</h1>
-        <p>Learn what each cleanup does, how scheduling works, and what to check when a count or cleanup is not what you expected.</p>
+        <p>Learn how Smart organize, Close, Sleep, Undo, and website protection work, and what to check when a result is not what you expected.</p>
       </header>
 
       <section aria-labelledby="start-title">
         <h2 id="start-title">Getting started</h2>
         <ol>
           <li>Install TabPare from the Chrome Web Store and pin it to the toolbar.</li>
-          <li>Select the TabPare icon to see the current duplicate and inactive candidate counts.</li>
-          <li>Select <strong>Close</strong> for the cleanup you want. Cleanup starts immediately without a confirmation dialog.</li>
-          <li>Open <strong>Settings</strong> to change the inactivity threshold or configure optional automatic cleanup.</li>
+          <li>Select the TabPare icon to organize eligible tabs in the current window or see the duplicate and inactive candidate counts.</li>
+          <li>Select <strong>Smart organize</strong> to create useful groups in the current window. On first use, Chrome asks for optional tab-group permission.</li>
+          <li>Select the action shown for the cleanup you want: <strong>Close</strong> for duplicates, or <strong>Close inactive</strong> / <strong>Sleep inactive</strong> for inactive tabs. Cleanup starts immediately without a confirmation dialog.</li>
+          <li>Open <strong>Settings</strong> to change the inactivity threshold, choose whether inactive cleanup uses Close or Sleep, adjust duplicate matching, choose the manual window scope, protect a website, or configure optional automatic cleanup.</li>
         </ol>
         <p>TabPare requires Chrome 121 or later.</p>
+      </section>
+
+      <section aria-labelledby="organize-title">
+        <h2 id="organize-title">Smart organize</h2>
+        <p>Smart organize works on the window where TabPare was opened. It classifies ungrouped normal HTTP or HTTPS tabs, then creates named and colored groups only when at least two tabs belong together. Pinned tabs, browser or extension pages, and tabs already in a group remain untouched.</p>
+        <p>TabPare always has a deterministic local classifier. If Chrome's on-device language model is already available, it may enhance the local plan. Organization processes only eligible tabs' titles and hostnames; it does not read page content or the full browsing history, and it does not upload organization data.</p>
+        <p>After grouping, select <strong>Undo organization</strong> to ungroup the affected tabs and restore their previous order when possible. That snapshot lasts only for the current browser session.</p>
+        <p>If you decline Chrome's optional tab-group permission, no groups are created. Duplicate and inactive cleanup continue to work normally.</p>
       </section>
 
       <section aria-labelledby="manual-title">
         <h2 id="manual-title">Manual cleanup</h2>
         <dl>
           <dt>Duplicate tabs</dt>
-          <dd>TabPare groups tabs with the same HTTP or HTTPS URL. It keeps protected tabs; when no copy is protected, it keeps the most recently used copy and closes the other candidates.</dd>
+          <dd>TabPare groups tabs with the same HTTP or HTTPS URL. It keeps protected tabs; when no copy is protected, it keeps the most recently used copy and closes the other candidates. The optional tracking-parameter setting described below changes how URLs are compared.</dd>
           <dt>Inactive tabs</dt>
-          <dd>TabPare compares each normal web tab's last-accessed time with your chosen threshold. Only manual cleanup can close inactive tabs.</dd>
+          <dd>TabPare compares each normal web tab's last-accessed time with your chosen threshold. Close is the default action. Choose Sleep to ask Chrome to discard the loaded page while keeping its tab. Chrome reloads the page when you return, and TabPare skips tabs Chrome already reports as discarded. Inactive cleanup is always manual.</dd>
         </dl>
-        <p>Active, pinned, and audible tabs are protected. Chrome internal pages and other non-web URLs are excluded from both cleanup types.</p>
+        <p>Active, pinned, and audible tabs are protected. Exact hostnames you add to the protected-sites list are also excluded. Chrome internal pages and other non-web URLs are excluded from both cleanup types.</p>
+        <p>Manual counts and cleanup can cover <strong>All windows</strong> or only the <strong>Current window</strong>. The current-window option is captured when you open TabPare and never expands to other windows if that window becomes unavailable.</p>
+      </section>
+
+      <section aria-labelledby="matching-title">
+        <h2 id="matching-title">Optional tracking-parameter matching</h2>
+        <p><strong>Ignore tracking parameters</strong> is off by default. When it is off, TabPare uses its standard duplicate comparison. When it is on, TabPare ignores these parameter names case-insensitively:</p>
+        <p><code>utm_*</code>, <code>gclid</code>, <code>dclid</code>, <code>gbraid</code>, <code>wbraid</code>, <code>fbclid</code>, <code>msclkid</code>, <code>mc_cid</code>, <code>mc_eid</code>, <code>_ga</code>, <code>_gl</code>, <code>yclid</code>, <code>ttclid</code>, <code>twclid</code>, <code>li_fat_id</code>, and <code>igshid</code>.</p>
+        <p>TabPare never ignores <code>ref</code>, <code>source</code>, <code>si</code>, <code>tag</code>, <code>token</code>, <code>session</code>, or <code>redirect</code>. It preserves every remaining parameter and its original order. The selected rule applies to manual and scheduled duplicate cleanup.</p>
+      </section>
+
+      <section aria-labelledby="undo-title">
+        <h2 id="undo-title">Undo the latest cleanup</h2>
+        <p>After TabPare closes tabs, select <strong>Undo</strong> beside the latest result to reopen them. If only some tabs can be restored, select <strong>Retry</strong> to try the remaining tabs again.</p>
+        <p>Undo restores each URL in the background and approximates its previous window and tab order. Chrome does not provide enough information to restore back/forward history, form contents, scroll position, or other in-page state.</p>
+        <p>Sleep does not offer Undo because it keeps tabs open. The undo option lasts until another cleanup begins, including a Sleep cleanup, Chrome restarts, or the extension is reloaded, updated, disabled, or removed.</p>
       </section>
 
       <section aria-labelledby="automatic-title">
@@ -64,6 +94,7 @@
           <li>Two hours is the recommended preselected interval, but nothing runs until you enable <strong>Automatic cleanup</strong>.</li>
           <li>Preset choices range from 30 minutes to one week. The custom option accepts whole-number intervals within the same range.</li>
           <li>Scheduled cleanup closes duplicate tabs only. It never closes inactive tabs in the background.</li>
+          <li>Scheduled cleanup always checks all Chrome windows, even when manual cleanup is set to Current window.</li>
           <li>Scheduling works while Chrome is running. A missed alarm may run after Chrome or the computer wakes.</li>
         </ul>
       </section>
@@ -72,13 +103,19 @@
         <h2 id="troubleshooting-title">Troubleshooting</h2>
         <dl>
           <dt>The count is lower than expected</dt>
-          <dd>Check whether a tab is active, pinned, playing audio, or uses a non-HTTP(S) address. Those tabs are excluded or protected.</dd>
+          <dd>Check whether a tab is active, pinned, playing audio, uses a protected hostname, or has a non-HTTP(S) address. Also confirm whether manual cleanup is set to Current window. Those tabs may be protected or outside the selected scope.</dd>
           <dt>A duplicate remains open</dt>
-          <dd>A protected copy is kept. Tabs may also change between the count and the final safety check, in which case TabPare skips the tab.</dd>
+          <dd>A protected copy is kept. Tabs may also change between the count and the final safety check, in which case TabPare skips the tab. Check whether Ignore tracking parameters is enabled and whether the URLs still differ by a parameter TabPare preserves.</dd>
           <dt>An inactive tab is not counted</dt>
-          <dd>Confirm the inactivity value and unit in Settings. Chrome must provide a valid last-accessed time, and the tab must have remained unused past the threshold.</dd>
+          <dd>Confirm the inactivity value and unit in Settings. Chrome must provide a valid last-accessed time, and the tab must have remained unused past the threshold. In Sleep mode, tabs Chrome already reports as discarded are not counted again.</dd>
           <dt>Automatic cleanup did not run</dt>
           <dd>Confirm that Automatic cleanup is enabled and Chrome is running. Disabling the switch removes the scheduled alarm.</dd>
+          <dt>Undo is not available</dt>
+          <dd>Undo appears only after a cleanup closes at least one tab. Sleep does not offer Undo. Any new cleanup clears the previous Undo, and it is also cleared when Chrome restarts or the extension is reloaded, updated, disabled, or removed.</dd>
+          <dt>Smart organize did not create groups</dt>
+          <dd>Confirm that Chrome granted the optional tab-group permission and that the current window contains at least two related, ungrouped normal web tabs. Pinned, internal, and already grouped tabs are intentionally preserved. Cleanup does not depend on this permission.</dd>
+          <dt>Undo organization is not available</dt>
+          <dd>Undo organization appears only after TabPare creates a group. It lasts for the current browser session and is cleared when Chrome restarts or the extension is reloaded, updated, disabled, or removed.</dd>
           <dt>The extension stopped responding</dt>
           <dd>Open <code>chrome://extensions</code>, confirm TabPare is enabled, then restart Chrome. If the problem continues, include your Chrome version and steps to reproduce when contacting support.</dd>
         </dl>
@@ -101,6 +138,7 @@
       <nav aria-label="Footer navigation">
         <a href="index.html">Overview</a>
         <a href="privacy.html">Privacy</a>
+        <a href="zh-CN/support.html" lang="zh-CN" hreflang="zh-CN">中文</a>
       </nav>
     </footer>
   </body>

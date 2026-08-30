@@ -1,0 +1,7 @@
+Meet TabPare. Smart Organize groups related tabs in one click, while duplicate cleanup keeps only the copies you need.
+
+Choose Sleep to free memory, or Close to remove inactive tabs. Optional automation clears duplicates on your schedule.
+
+Protect important sites. After cleanup, Undo restores closed tabs, and Retry handles anything left.
+
+Simple, private tab control, right inside Chrome.

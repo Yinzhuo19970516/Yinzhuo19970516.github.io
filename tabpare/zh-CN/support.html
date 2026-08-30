@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="TabPare Chrome 扩展程序的设置、安全说明和故障排查指南。">
+    <meta name="color-scheme" content="light">
+    <meta name="theme-color" content="#f4f2ea">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; img-src 'self' data:; media-src 'self'; base-uri 'none'; form-action 'none'">
+    <title>支持 — TabPare</title>
+    <link rel="icon" href="../icon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="alternate" hreflang="en" href="../support.html">
+    <link rel="alternate" hreflang="zh-CN" href="support.html">
+    <link rel="alternate" hreflang="x-default" href="../support.html">
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">跳到主要内容</a>
+
+    <header class="site-header">
+      <a class="brand" href="index.html" aria-label="TabPare 首页" translate="no">
+        <img class="brand-mark" src="../icon.svg" width="38" height="38" alt="" aria-hidden="true">
+        <span>TabPare</span>
+      </a>
+      <div class="site-header-actions">
+        <nav class="site-nav" aria-label="主导航">
+          <ul>
+            <li><a href="index.html">概览</a></li>
+            <li><a href="support.html" aria-current="page">支持</a></li>
+            <li><a href="privacy.html">隐私</a></li>
+          </ul>
+        </nav>
+        <a class="language-link" href="../support.html" lang="en" hreflang="en" aria-label="Switch to English">EN</a>
+      </div>
+    </header>
+
+    <main id="main-content" class="page-shell document">
+      <header class="document-header">
+        <p class="eyebrow">TabPare 支持</p>
+        <h1>操作清楚，结果可预期。</h1>
+        <p>了解智能整理、关闭、休眠、撤销和网站保护如何工作，以及结果不符合预期时应检查什么。</p>
+      </header>
+
+      <section aria-labelledby="start-title">
+        <h2 id="start-title">开始使用</h2>
+        <ol>
+          <li>从 Chrome 网上应用店安装 TabPare，并将它固定到工具栏。</li>
+          <li>点击 TabPare 图标，整理当前窗口中符合条件的标签页，或查看重复标签页和闲置标签页的待处理数量。</li>
+          <li>点击<strong>智能整理</strong>，在当前窗口中创建有用的标签组。首次使用时，Chrome 会询问是否授予可选的标签组权限。</li>
+          <li>点击相应操作：对重复标签页选择<strong>关闭</strong>；对闲置标签页选择<strong>关闭闲置</strong>或<strong>休眠闲置</strong>。操作会立即开始，不会再次弹出确认。</li>
+          <li>展开<strong>设置</strong>，可修改闲置判定时间、选择关闭或休眠、调整重复页面比较规则、选择手动清理的窗口范围、保护网站，或配置可选的自动清理。</li>
+        </ol>
+        <p>TabPare 需要 Chrome 121 或更高版本。</p>
+      </section>
+
+      <section aria-labelledby="organize-title">
+        <h2 id="organize-title">智能整理</h2>
+        <p>智能整理只处理打开 TabPare 时所在的窗口。它会对尚未分组的普通 HTTP 或 HTTPS 标签页进行分类，并且只有至少两个标签页适合归为一组时才创建带名称和颜色的标签组。固定标签页、浏览器或扩展程序页面，以及已有标签组中的标签页均保持不变。</p>
+        <p>TabPare 始终提供确定性的本地分类规则。如果 Chrome 的设备端语言模型已经可用，也可用它优化本地分组方案。整理只处理符合条件的标签页标题和域名，不读取网页正文或完整浏览历史，也不会上传整理数据。</p>
+        <p>分组完成后，可点击<strong>撤销整理</strong>，尽可能取消受影响标签页的分组并恢复原始顺序。该记录仅保留在当前浏览器会话中。</p>
+        <p>如果你拒绝 Chrome 的可选标签组权限，TabPare 不会创建标签组；重复和闲置标签页清理仍可正常使用。</p>
+      </section>
+
+      <section aria-labelledby="manual-title">
+        <h2 id="manual-title">手动清理</h2>
+        <dl>
+          <dt>重复标签页</dt>
+          <dd>TabPare 比较相同的 HTTP 或 HTTPS URL。受保护标签页会被保留；没有受保护副本时，会保留最近使用的标签页并关闭其他候选项。下方的可选追踪参数设置会改变 URL 的比较方式。</dd>
+          <dt>闲置标签页</dt>
+          <dd>TabPare 将普通网页标签页的上次访问时间与所选阈值比较。默认操作是关闭；也可选择休眠，让 Chrome 卸载页面但保留标签页，返回时由 Chrome 重新加载。Chrome 已报告为休眠的标签页不会被再次处理。闲置清理始终需要手动执行。</dd>
+        </dl>
+        <p>活动、固定和正在播放声音的标签页会受到保护。加入受保护网站列表的精确域名也会被排除。Chrome 内部页面和其他非普通网页地址不会参与两类清理。</p>
+        <p>手动统计和清理可以覆盖<strong>所有窗口</strong>，也可以仅覆盖<strong>当前窗口</strong>。当前窗口在打开 TabPare 时确定；如果该窗口随后不可用，TabPare 会返回错误，绝不会静默扩大到其他窗口。</p>
+      </section>
+
+      <section aria-labelledby="matching-title">
+        <h2 id="matching-title">可选的追踪参数比较</h2>
+        <p><strong>忽略追踪参数</strong>默认关闭。关闭时，TabPare 使用标准重复页面比较；开启后，比较参数名时不区分大小写，并忽略以下参数：</p>
+        <p><code>utm_*</code>、<code>gclid</code>、<code>dclid</code>、<code>gbraid</code>、<code>wbraid</code>、<code>fbclid</code>、<code>msclkid</code>、<code>mc_cid</code>、<code>mc_eid</code>、<code>_ga</code>、<code>_gl</code>、<code>yclid</code>、<code>ttclid</code>、<code>twclid</code>、<code>li_fat_id</code>、<code>igshid</code>。</p>
+        <p>TabPare 不会忽略 <code>ref</code>、<code>source</code>、<code>si</code>、<code>tag</code>、<code>token</code>、<code>session</code> 或 <code>redirect</code>。其余参数及其原始顺序都会保留。手动和定时重复标签页清理使用同一规则。</p>
+      </section>
+
+      <section aria-labelledby="undo-title">
+        <h2 id="undo-title">撤销最近一次清理</h2>
+        <p>TabPare 关闭标签页后，可点击最近一次结果旁的<strong>撤销</strong>重新打开标签页。如果只恢复了一部分，可点击<strong>重试</strong>，仅再次恢复尚未成功的标签页。</p>
+        <p>撤销会在后台重新打开 URL，并尽可能恢复原窗口和标签页顺序。Chrome 无法提供足够的信息来恢复前进或后退历史、表单内容、滚动位置及其他页面内部状态。</p>
+        <p>休眠不会关闭标签页，因此不提供撤销。开始任何新的清理（包括休眠清理）、Chrome 重启，或扩展被重新加载、更新、停用或移除后，撤销入口都会失效。</p>
+      </section>
+
+      <section aria-labelledby="automatic-title">
+        <h2 id="automatic-title">自动清理</h2>
+        <ul>
+          <li>自动清理默认关闭。</li>
+          <li>推荐间隔预设为每 2 小时，但只有开启<strong>自动清理重复标签页</strong>后才会执行。</li>
+          <li>预设间隔覆盖 30 分钟至 1 周；自定义间隔也必须在这一范围内，并使用整数。</li>
+          <li>定时清理只关闭重复标签页，绝不会在后台关闭闲置标签页。</li>
+          <li>即使手动清理范围设为“当前窗口”，定时清理仍会检查所有 Chrome 窗口。</li>
+          <li>定时任务仅在 Chrome 运行时工作；Chrome 或电脑唤醒后，可能补执行一次错过的任务。</li>
+        </ul>
+      </section>
+
+      <section aria-labelledby="troubleshooting-title">
+        <h2 id="troubleshooting-title">故障排查</h2>
+        <dl>
+          <dt>待处理数量比预期少</dt>
+          <dd>检查标签页是否为当前活动页、已固定、正在播放声音、使用受保护域名，或地址不是 HTTP/HTTPS。还要确认手动清理范围是否为“当前窗口”。这些标签页可能受到保护，或不在当前范围内。</dd>
+          <dt>仍有重复标签页未关闭</dt>
+          <dd>受保护的副本会保留。统计完成后，标签页状态也可能发生变化；最终安全检查发现变化时，TabPare 会跳过该标签页。请检查是否开启“忽略追踪参数”，以及 URL 是否仍存在 TabPare 会保留的业务参数差异。</dd>
+          <dt>闲置标签页没有计入</dt>
+          <dd>确认“设置”中的闲置时间和单位。Chrome 必须提供有效的上次访问时间，且标签页未使用时长需要超过阈值。休眠模式下，Chrome 已报告为休眠的标签页不会再次计入。</dd>
+          <dt>自动清理没有运行</dt>
+          <dd>确认“自动清理重复标签页”已开启，并且 Chrome 正在运行。关闭开关会移除定时任务。</dd>
+          <dt>没有显示撤销</dt>
+          <dd>只有清理实际关闭至少一个标签页后才会显示撤销。休眠不提供撤销。任何新清理都会清除上一次撤销；Chrome 重启，或扩展被重新加载、更新、停用或移除时也会清除。</dd>
+          <dt>智能整理没有创建标签组</dt>
+          <dd>确认 Chrome 已授予可选的标签组权限，并且当前窗口中至少有两个相关的、未分组的普通网页标签页。固定标签页、内部页面和已有标签组会被保留。清理功能不依赖此权限。</dd>
+          <dt>没有显示撤销整理</dt>
+          <dd>只有 TabPare 实际创建标签组后才会显示“撤销整理”。它仅在当前浏览器会话中有效；Chrome 重启，或扩展被重新加载、更新、停用或移除时会清除。</dd>
+          <dt>扩展程序停止响应</dt>
+          <dd>打开 <code>chrome://extensions</code>，确认 TabPare 已启用，然后重启 Chrome。如果问题仍然存在，联系支持时请提供 Chrome 版本和可复现步骤。</dd>
+        </dl>
+      </section>
+
+      <section aria-labelledby="contact-title">
+        <h2 id="contact-title">联系支持</h2>
+        <p>请通过 TabPare 在 Chrome 网上应用店商品详情页中的“支持”入口提交问题，并附上：</p>
+        <ul>
+          <li>Chrome 版本和操作系统。</li>
+          <li><code>chrome://extensions</code> 中显示的 TabPare 版本。</li>
+          <li>你的预期、实际结果和可复现步骤。</li>
+        </ul>
+        <p>请勿发送私人浏览历史、账号凭据，或包含敏感标签页标题和 URL 的截图。</p>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>TabPare · 支持</p>
+      <nav aria-label="页脚导航"><a href="index.html">概览</a><a href="privacy.html">隐私</a><a href="../support.html" lang="en" hreflang="en">English</a></nav>
+    </footer>
+  </body>
+</html>
