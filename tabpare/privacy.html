@@ -57,7 +57,7 @@
           <li>The title and hostname of an eligible tab, to classify ungrouped normal web tabs in the current window for Smart organize.</li>
           <li>The tab URL, to match duplicate pages and restrict organization and cleanup to normal HTTP or HTTPS pages. If the user enables optional tracking-parameter matching, TabPare removes recognized tracking parameters from the local comparison while preserving all remaining parameters and their order.</li>
           <li>The tab's last-accessed time, to identify inactive tabs and choose which duplicate to keep.</li>
-          <li>Whether the tab is active, pinned, playing audio, already discarded, or already grouped, so protected tabs are not closed or put to sleep and Smart organize preserves pinned and existing grouped tabs.</li>
+          <li>Whether the tab is active, pinned, playing audio, already discarded, or already grouped, so TabPare can report scoped totals, include Chrome-discarded tabs in manual Close, avoid discarding them again in Sleep, protect excluded tabs, and preserve pinned and existing grouped tabs during Smart organize.</li>
           <li>The tab and window identifiers and tab position, so Chrome can group, close, or discard selected tabs, limit actions to their specified window, and restore the latest reversible action.</li>
         </ul>
         <p>This information is processed on the user's device. Smart organize processes only eligible open tabs' titles and hostnames, not page content or the user's full browsing history. Its deterministic classifier works without a network service; when Chrome's on-device language model is already available, TabPare may use that browser-provided model to enhance the local plan.</p>
@@ -68,7 +68,7 @@
         <h2 id="storage-title">Settings and local records</h2>
         <p>TabPare stores only the information needed to remember user choices and report the latest cleanup:</p>
         <ul>
-          <li><strong>Chrome Sync storage:</strong> whether automatic cleanup is enabled, the selected automatic-cleanup interval, the manual inactivity threshold and unit, whether inactive cleanup closes or sleeps tabs, whether duplicate matching ignores recognized tracking parameters, and whether manual cleanup covers all windows or only the current window. Chrome may sync these settings through the user's signed-in Chrome profile when Chrome Sync is enabled.</li>
+          <li><strong>Chrome Sync storage:</strong> whether automatic organization or automatic duplicate cleanup is enabled, the shared automation interval, the manual inactivity threshold and unit, whether inactive cleanup closes or sleeps tabs, whether duplicate matching ignores recognized tracking parameters, and whether manual cleanup covers all windows or only the current window. Chrome may sync these settings through the user's signed-in Chrome profile when Chrome Sync is enabled.</li>
           <li><strong>Local extension storage:</strong> exact protected hostnames chosen by the user and one aggregate status record for the latest cleanup or Undo operation. The aggregate record contains timestamps, operation details, and counts, but no tab URLs. Protected hostnames are not placed in Chrome Sync storage.</li>
           <li><strong>In-memory session storage:</strong> after a cleanup closes tabs, the URLs and window-placement metadata needed to offer Undo; after Smart organize creates groups, the affected tab identifiers and previous positions needed to offer Undo organization. This information is not synced and is never sent to the developer or third parties.</li>
         </ul>
@@ -76,7 +76,7 @@
 
       <section aria-labelledby="use-title">
         <h2 id="use-title">How information is used</h2>
-        <p>Tab information and saved settings are used solely to provide the user-facing functions described in the Chrome Web Store listing: organize eligible tabs in the current window, undo that organization, count and manually close duplicate or inactive tabs, sleep inactive tabs through Chrome's tab-discard feature, compare duplicate URLs with the user's selected matching rule, limit manual cleanup to a selected window scope, protect active, pinned, audible, or user-selected websites, restore the latest tab-closing cleanup, and run optional scheduled duplicate cleanup after the user enables it.</p>
+        <p>Tab information and saved settings are used solely to provide the user-facing functions described in the Chrome Web Store listing: report open-tab and Chrome-discarded counts for the selected scope, organize eligible tabs on demand or on the user's optional schedule, undo the latest organization, count and manually close duplicate or inactive tabs, sleep inactive tabs through Chrome's tab-discard feature, compare duplicate URLs with the user's selected matching rule, limit manual cleanup to a selected window scope, protect active, pinned, audible, or user-selected websites, restore the latest tab-closing cleanup, and run optional scheduled duplicate cleanup after the user enables it.</p>
         <p>Optional tracking-parameter matching is off by default. When enabled, it ignores parameter names case-insensitively: <code>utm_*</code>, <code>gclid</code>, <code>dclid</code>, <code>gbraid</code>, <code>wbraid</code>, <code>fbclid</code>, <code>msclkid</code>, <code>mc_cid</code>, <code>mc_eid</code>, <code>_ga</code>, <code>_gl</code>, <code>yclid</code>, <code>ttclid</code>, <code>twclid</code>, <code>li_fat_id</code>, and <code>igshid</code>. It never ignores <code>ref</code>, <code>source</code>, <code>si</code>, <code>tag</code>, <code>token</code>, <code>session</code>, or <code>redirect</code>. The same rule is used for manual and scheduled duplicate cleanup, and every remaining parameter stays in its original order.</p>
       </section>
 
@@ -88,9 +88,9 @@
       <section aria-labelledby="control-title">
         <h2 id="control-title">Your controls and retention</h2>
         <ul>
-          <li>Automatic cleanup is off by default and can be disabled at any time in TabPare settings.</li>
+          <li>Automatic organization and automatic duplicate cleanup are both off by default and can be disabled at any time in TabPare settings.</li>
           <li>TabPare cannot be enabled in Incognito windows.</li>
-          <li>Smart organize runs only after the user selects it. Chrome requests optional tab-group permission on first use; declining it leaves cleanup features available.</li>
+          <li>Manual Smart organize runs only after the user selects it. Automatic organization is off by default and runs only after the user enables it. Chrome requests optional tab-group permission before either feature can create groups; declining it leaves cleanup features available.</li>
           <li>Close is the default inactive action. The user can instead choose Sleep, which asks Chrome to discard the loaded page while keeping the tab. Chrome reloads the page when the user returns.</li>
           <li>Settings remain in Chrome extension storage until changed, cleared through Chrome, or removed with the extension, subject to Chrome Sync behavior.</li>
           <li>Exact protected hostnames remain in local extension storage until the user removes them, clears extension data, or uninstalls TabPare.</li>
@@ -108,9 +108,9 @@
           <dt><code>storage</code></dt>
           <dd>Saves cleanup settings, exact protected hostnames, the most recent aggregate cleanup result, and the temporary in-memory Undo snapshot.</dd>
           <dt><code>alarms</code></dt>
-          <dd>Schedules duplicate cleanup at the interval explicitly enabled and selected by the user.</dd>
+          <dd>Schedules local tab organization, duplicate cleanup, or both at the interval explicitly enabled and selected by the user.</dd>
           <dt><code>tabGroups</code> (optional)</dt>
-          <dd>Creates, titles, colors, and undoes tab groups after the user selects Smart organize. Chrome asks for this optional permission only on first use, and the user may deny it without losing cleanup features.</dd>
+          <dd>Creates, titles, colors, and undoes tab groups after the user selects Smart organize or enables Automatic organize. Chrome asks for this optional permission before use, and the user may deny it without losing cleanup features.</dd>
         </dl>
         <p>TabPare does not request access to all website content, bookmarks, Chrome browsing history, downloads, or the user's identity.</p>
       </section>

@@ -67,7 +67,9 @@
           <dt>Duplicate tabs</dt>
           <dd>TabPare groups tabs with the same HTTP or HTTPS URL. It keeps protected tabs; when no copy is protected, it keeps the most recently used copy and closes the other candidates. The optional tracking-parameter setting described below changes how URLs are compared.</dd>
           <dt>Inactive tabs</dt>
-          <dd>TabPare compares each normal web tab's last-accessed time with your chosen threshold. Close is the default action. Choose Sleep to ask Chrome to discard the loaded page while keeping its tab. Chrome reloads the page when you return, and TabPare skips tabs Chrome already reports as discarded. Inactive cleanup is always manual.</dd>
+          <dd>TabPare compares each normal web tab's last-accessed time with your chosen threshold. Close is the default action and also includes tabs Chrome already reports as discarded, even when they have not crossed TabPare's threshold. Choose Sleep to ask Chrome to discard an eligible loaded page while keeping its tab. Chrome reloads the page when you return, and Sleep skips tabs Chrome already reports as discarded. Inactive cleanup is always manual.</dd>
+          <dt>Tab total and Chrome Memory Saver</dt>
+          <dd>The popup shows the number of tabs open in the selected manual-cleanup scope. Settings also reports how many scoped tabs Chrome currently marks as discarded and links to Google's Memory Saver setup guide. Seeing zero discarded tabs does not prove Memory Saver is off.</dd>
         </dl>
         <p>Active, pinned, and audible tabs are protected. Exact hostnames you add to the protected-sites list are also excluded. Chrome internal pages and other non-web URLs are excluded from both cleanup types.</p>
         <p>Manual counts and cleanup can cover <strong>All windows</strong> or only the <strong>Current window</strong>. The current-window option is captured when you open TabPare and never expands to other windows if that window becomes unavailable.</p>
@@ -88,13 +90,14 @@
       </section>
 
       <section aria-labelledby="automatic-title">
-        <h2 id="automatic-title">Automatic cleanup</h2>
+        <h2 id="automatic-title">Optional automation</h2>
         <ul>
           <li>Automation is off by default.</li>
-          <li>Two hours is the recommended preselected interval, but nothing runs until you enable <strong>Automatic cleanup</strong>.</li>
+          <li>Two hours is the recommended preselected interval, but nothing runs until you enable <strong>Automatic organize</strong>, <strong>Automatic duplicate cleanup</strong>, or both.</li>
           <li>Preset choices range from 30 minutes to one week. The custom option accepts whole-number intervals within the same range.</li>
+          <li>Automatic organization applies the local classifier independently to each normal Chrome window and requires the optional tab-group permission.</li>
           <li>Scheduled cleanup closes duplicate tabs only. It never closes inactive tabs in the background.</li>
-          <li>Scheduled cleanup always checks all Chrome windows, even when manual cleanup is set to Current window.</li>
+          <li>Both automations check all normal Chrome windows, even when manual cleanup is set to Current window.</li>
           <li>Scheduling works while Chrome is running. A missed alarm may run after Chrome or the computer wakes.</li>
         </ul>
       </section>
@@ -107,7 +110,7 @@
           <dt>A duplicate remains open</dt>
           <dd>A protected copy is kept. Tabs may also change between the count and the final safety check, in which case TabPare skips the tab. Check whether Ignore tracking parameters is enabled and whether the URLs still differ by a parameter TabPare preserves.</dd>
           <dt>An inactive tab is not counted</dt>
-          <dd>Confirm the inactivity value and unit in Settings. Chrome must provide a valid last-accessed time, and the tab must have remained unused past the threshold. In Sleep mode, tabs Chrome already reports as discarded are not counted again.</dd>
+          <dd>Confirm the inactivity value and unit in Settings. An ordinary loaded page needs a valid last-accessed time and must remain unused past the threshold. In Close mode, tabs Chrome already reports as discarded are counted immediately; in Sleep mode, those tabs are not counted again.</dd>
           <dt>Automatic cleanup did not run</dt>
           <dd>Confirm that Automatic cleanup is enabled and Chrome is running. Disabling the switch removes the scheduled alarm.</dd>
           <dt>Undo is not available</dt>
