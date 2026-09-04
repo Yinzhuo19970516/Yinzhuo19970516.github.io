@@ -52,11 +52,11 @@
 
       <section aria-labelledby="processing-title">
         <h2 id="processing-title">Information processed</h2>
-        <p>To provide its organization and cleanup features, TabPare reads information about tabs currently open in Chrome:</p>
+        <p>TabPare installs without tab access. Before Chrome asks for the optional permission, the popup explains that TabPare checks only currently open tabs, does not access full browsing history, does not measure time spent on websites, and processes tab data on the device. Only after the user selects <strong>Enable tab cleanup</strong> can TabPare read the following information about tabs currently open in Chrome:</p>
         <ul>
           <li>The title and hostname of an eligible tab, to classify ungrouped normal web tabs in the current window for Smart organize.</li>
           <li>The tab URL, to match duplicate pages and restrict organization and cleanup to normal HTTP or HTTPS pages. If the user enables optional tracking-parameter matching, TabPare removes recognized tracking parameters from the local comparison while preserving all remaining parameters and their order.</li>
-          <li>The tab's last-accessed time, to identify inactive tabs and choose which duplicate to keep.</li>
+          <li>The tab's last-accessed timestamp, to identify inactive tabs and choose which duplicate to keep. TabPare compares this timestamp with the selected threshold; it does not calculate time spent on a website.</li>
           <li>Whether the tab is active, pinned, playing audio, already discarded, or already grouped, so TabPare can report scoped totals, include Chrome-discarded tabs in manual Close, avoid discarding them again in Sleep, protect excluded tabs, and preserve pinned and existing grouped tabs during Smart organize.</li>
           <li>The tab and window identifiers and tab position, so Chrome can group, close, or discard selected tabs, limit actions to their specified window, and restore the latest reversible action.</li>
         </ul>
@@ -103,8 +103,8 @@
       <section aria-labelledby="permissions-title">
         <h2 id="permissions-title">Chrome permissions</h2>
         <dl>
-          <dt><code>tabs</code></dt>
-          <dd>Reads the title, hostname or URL, state, grouping, and placement of currently open tabs so TabPare can classify eligible tabs, find cleanup candidates, close or discard selected tabs, and restore reversible actions.</dd>
+          <dt><code>tabs</code> (optional)</dt>
+          <dd>Requested only after the user selects <strong>Enable tab cleanup</strong>. Reads the title, hostname or URL, state, grouping, and placement of currently open tabs so TabPare can classify eligible tabs, find cleanup candidates, close or discard selected tabs, and restore reversible actions.</dd>
           <dt><code>storage</code></dt>
           <dd>Saves cleanup settings, exact protected hostnames, the most recent aggregate cleanup result, and the temporary in-memory Undo snapshot.</dd>
           <dt><code>alarms</code></dt>
